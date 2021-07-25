@@ -1,18 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { render } from './AppLoader';
 
-import App from './App';
-import store from './redux/store';
+const element: HTMLElement | null = document.getElementById('container');
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById('container'),
-);
+if (element) {
+  render(element);
+}
+
+export {};

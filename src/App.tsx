@@ -1,16 +1,22 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import Todo from './Pages/Todo';
-import Done from './Pages/Done';
-import AddTask from './Pages/AddTask';
+import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
+
+import Navbar from './components/Navbar';
+import Content from '../src/content/Content';
+
+import store from './redux/store';
 
 const App: React.FC = () => {
   return (
-    <div className='wrapper'>
-      <Route path='/' component={Todo} exact />
-      <Route path='/done' component={Done} exact />
-      <Route path='/addTask' component={AddTask} exact />
-    </div>
+    <Provider store={store}>
+      <div className='app'>
+        <HashRouter>
+          <Navbar />
+          <Content />
+        </HashRouter>
+      </div>
+    </Provider>
   );
 };
 

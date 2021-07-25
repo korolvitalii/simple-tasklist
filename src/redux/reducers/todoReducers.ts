@@ -5,6 +5,15 @@ export const todoReducer = (state = [] as TodoTask[], action: TodoActionsTypes):
     case TodoActions.ADD_TASK: {
       return [...state, action.payload];
     }
+    case TodoActions.EDIT_TASK: {
+      return [...state, action.payload];
+    }
+    case TodoActions.ADD_TASK: {
+      return [...state, action.payload];
+    }
+    case TodoActions.ADD_TASK: {
+      return [...state, action.payload];
+    }
     default:
       return state;
   }

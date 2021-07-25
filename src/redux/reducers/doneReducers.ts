@@ -1,8 +1,8 @@
-import { TodoTask, TodoActions, TodoActionsTypes } from '../actions/todoAction';
+import { DoneTask, DoneActions, DoneActionsTypes } from '../actions/doneAction';
 
-export const doneReducer = (state = [] as TodoTask[], action: TodoActionsTypes): TodoTask[] => {
+export const doneReducer = (state = [] as DoneTask[], action: DoneActionsTypes): DoneTask[] => {
   switch (action.type) {
-    case TodoActions.ADD_TASK: {
+    case DoneActions.ADD_TASK: {
       return [...state, action.payload];
     }
     default:
