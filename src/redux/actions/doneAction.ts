@@ -61,12 +61,12 @@ export const removeTask = (id: number): DoneActionsTypes => ({
   },
 });
 
-export const ArchiveTask = (task: DoneTask): DoneActionsTypes => ({
+export const archiveTask = (task: DoneTask): DoneActionsTypes => ({
   type: DoneActions.ARCHIVE_TASK,
   payload: task,
 });
 
-export const ImportTasks = (tasks: DoneTask[]): DoneActionsTypes => ({
+export const importTasks = (tasks: DoneTask[]): DoneActionsTypes => ({
   type: DoneActions.IMPORT_TASKS,
   payload: tasks,
 });

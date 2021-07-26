@@ -12,7 +12,7 @@ export interface TodoTask {
   created: string;
   category: string;
   content: string;
-  dates: number;
+  dates: string[];
 }
 
 export interface AddTask {
@@ -61,12 +61,12 @@ export const removeTask = (id: number): TodoActionsTypes => ({
   },
 });
 
-export const ArchiveTask = (task: TodoTask): TodoActionsTypes => ({
+export const archiveTask = (task: TodoTask): TodoActionsTypes => ({
   type: TodoActions.ARCHIVE_TASK,
   payload: task,
 });
 
-export const ImportTasks = (tasks: TodoTask[]): TodoActionsTypes => ({
+export const importTasks = (tasks: TodoTask[]): TodoActionsTypes => ({
   type: TodoActions.IMPORT_TASKS,
   payload: tasks,
 });

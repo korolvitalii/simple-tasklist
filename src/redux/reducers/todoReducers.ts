@@ -11,8 +11,8 @@ export const todoReducer = (state = [] as TodoTask[], action: TodoActionsTypes):
     case TodoActions.ADD_TASK: {
       return [...state, action.payload];
     }
-    case TodoActions.ADD_TASK: {
-      return [...state, action.payload];
+    case TodoActions.IMPORT_TASKS: {
+      return action.payload;
     }
     default:
       return state;

@@ -1,6 +1,8 @@
 import React from 'react';
-import addIcon from '../assets/icons/add_white_36dp.svg';
-import { Button } from './Button';
+import { Button } from 'react-bootstrap';
+import { BsCheckAll } from 'react-icons/bs';
+import { BsArchive } from 'react-icons/bs';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 interface Props {}
 
@@ -10,13 +12,22 @@ const Header: React.FC = (props: Props) => {
   return (
     <thead>
       <tr>
-        <th>#</th>
         <th>Name</th>
         <th>Created</th>
         <th>Category</th>
         <th>Content</th>
         <th>Dates</th>
-        <Button variant='secondary' icon={addIcon} onClick={handleOnClick}></Button>
+        <th>
+          <Button onClick={handleOnClick} variant='dark'>
+            <BsCheckAll />
+          </Button>
+          <Button variant='dark'>
+            <BsArchive />
+          </Button>
+          <Button variant='dark'>
+            <BsFillTrashFill />
+          </Button>
+        </th>
       </tr>
     </thead>
   );

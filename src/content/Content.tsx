@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import Todo from '../Pages/AllNotes';
+import Todo from '../Pages/Home';
 
 interface Props {}
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/TableHeader';
-import Task from '../components/Task';
+import Task from '../components/Note';
 
 interface Props {}
 
