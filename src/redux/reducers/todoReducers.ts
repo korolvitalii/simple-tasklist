@@ -1,17 +1,18 @@
-import { TodoTask, TodoActions, TodoActionsTypes } from '../actions/todoAction';
+import { TodoNote, TodoActions, TodoActionsTypes } from '../actions/todoActions';
 
-export const todoReducer = (state = [] as TodoTask[], action: TodoActionsTypes): TodoTask[] => {
+export const todoReducer = (state = [] as TodoNote[], action: TodoActionsTypes): TodoNote[] => {
   switch (action.type) {
-    case TodoActions.ADD_TASK: {
+    case TodoActions.ADD_NOTE: {
       return [...state, action.payload];
     }
-    case TodoActions.EDIT_TASK: {
+    case TodoActions.EDIT_NOTE: {
       return [...state, action.payload];
     }
-    case TodoActions.ADD_TASK: {
-      return [...state, action.payload];
+    case TodoActions.REMOVE_NOTE: {
+      const newNotes = state.filter((note) => note.id !== action.payload.id);
+      return newNotes;
     }
-    case TodoActions.IMPORT_TASKS: {
+    case TodoActions.IMPORT_NOTES: {
       return action.payload;
     }
     default:

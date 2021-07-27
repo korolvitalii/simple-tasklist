@@ -6,17 +6,9 @@ import { DoneNote, addNote } from '../redux/actions/doneActions';
 import { TodoNote, removeNote } from '../redux/actions/todoActions';
 import { addToArchiveNote } from '../redux/actions/archiveActions';
 
-const Note: React.FC = () => {
-  const notes = useSelector((state: RootStateOrAny) => state.allNotes);
-
+const Archive: React.FC = () => {
+  const notes = useSelector((state: RootStateOrAny) => state.archiveNotes);
   const dispatch = useDispatch();
-  const onClickAddNoteToDone =
-    (id: number) =>
-    (e: React.MouseEvent): void => {
-      const currentNote = notes.find((note: DoneNote) => note.id === id);
-      dispatch(removeNote(id));
-      dispatch(addNote(currentNote));
-    };
 
   const onClickRemoveNote =
     (id: number) =>
@@ -44,12 +36,6 @@ const Note: React.FC = () => {
             <td>{content}</td>
             <td>{dates}</td>
             <td>
-              <Button onClick={onClickAddNoteToDone(id)} variant='dark'>
-                <BsCheck />
-              </Button>
-              <Button variant='dark'>
-                <BsPencil />
-              </Button>
               <Button onClick={onClickArchiveNote(id)} variant='dark'>
                 <BsArchive />
               </Button>
@@ -64,4 +50,4 @@ const Note: React.FC = () => {
   );
 };
 
-export default Note;
+export default Archive;
