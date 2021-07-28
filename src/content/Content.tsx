@@ -4,9 +4,7 @@ import ArchiveNotes from '../Pages/ArchiveNotes';
 import DoneNotes from '../Pages/DoneNotes';
 import Home from '../Pages/Home';
 
-interface Props {}
-
-const Content = (props: Props) => {
+const Content: React.FC = () => {
   return (
     <Switch>
       <Route component={Home} path='/home' />

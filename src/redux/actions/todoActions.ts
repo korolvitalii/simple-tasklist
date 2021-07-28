@@ -1,8 +1,9 @@
 export enum TodoActions {
   ADD_NOTE = 'Add todo Note',
+  ADD_ALL_NOTES = 'Add todo Note',
   EDIT_NOTE = 'Edit todo Note',
   REMOVE_NOTE = 'Remove todo Note',
-  ARCHIVE_NOTE = 'Archive todo Note',
+  REMOVE_ALL_NOTES = 'Remove all todo Notes',
   IMPORT_NOTES = 'Import Notes',
 }
 
@@ -12,7 +13,7 @@ export type TodoNote = {
   created: string;
   category: string;
   content: string;
-  dates: string[];
+  dates: string;
 };
 
 export type AddNote = {
@@ -32,9 +33,8 @@ export type RemoveNote = {
   };
 };
 
-export type ArchiveNote = {
-  type: TodoActions.ARCHIVE_NOTE;
-  payload: TodoNote;
+export type RemoveAllNote = {
+  type: TodoActions.REMOVE_ALL_NOTES;
 };
 
 export type ImportNotes = {
@@ -42,16 +42,16 @@ export type ImportNotes = {
   payload: TodoNote[];
 };
 
-export type TodoActionsTypes = AddNote | EditNote | RemoveNote | ArchiveNote | ImportNotes;
+export type TodoActionsTypes = AddNote | EditNote | RemoveNote | RemoveAllNote | ImportNotes;
 
-export const addNote = (Note: TodoNote): TodoActionsTypes => ({
+export const addNote = (note: TodoNote): TodoActionsTypes => ({
   type: TodoActions.ADD_NOTE,
-  payload: Note,
+  payload: note,
 });
 
-export const editNote = (Note: TodoNote): TodoActionsTypes => ({
+export const editNote = (note: TodoNote): TodoActionsTypes => ({
   type: TodoActions.EDIT_NOTE,
-  payload: Note,
+  payload: note,
 });
 
 export const removeNote = (id: number): TodoActionsTypes => ({
@@ -61,12 +61,11 @@ export const removeNote = (id: number): TodoActionsTypes => ({
   },
 });
 
-export const archiveNote = (Note: TodoNote): TodoActionsTypes => ({
-  type: TodoActions.ARCHIVE_NOTE,
-  payload: Note,
-});
+export const removeAllNote: TodoActionsTypes = {
+  type: TodoActions.REMOVE_ALL_NOTES,
+};
 
-export const importNotes = (Notes: TodoNote[]): TodoActionsTypes => ({
+export const importNotes = (notes: Array<TodoNote>): TodoActionsTypes => ({
   type: TodoActions.IMPORT_NOTES,
-  payload: Notes,
+  payload: notes,
 });

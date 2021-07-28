@@ -4,7 +4,7 @@ import { BsArchive, BsFillTrashFill, BsPencil, BsCheck } from 'react-icons/bs';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { DoneNote, addNote } from '../redux/actions/doneActions';
 import { TodoNote, removeNote } from '../redux/actions/todoActions';
-import { addToArchiveNote } from '../redux/actions/archiveActions';
+import { archivateNote } from '../redux/actions/archiveActions';
 
 const Done: React.FC = () => {
   const notes = useSelector((state: RootStateOrAny) => state.doneNotes);
@@ -20,7 +20,7 @@ const Done: React.FC = () => {
     (id: number) =>
     (e: React.MouseEvent): void => {
       const currentNote = notes.find((note: DoneNote) => note.id === id);
-      dispatch(addToArchiveNote(currentNote));
+      dispatch(archivateNote(currentNote));
       dispatch(removeNote(id));
     };
 

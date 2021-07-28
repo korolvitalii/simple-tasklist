@@ -5,6 +5,9 @@ export const doneReducer = (state = [] as DoneNote[], action: DoneActionsTypes):
     case DoneActions.ADD_NOTE: {
       return [...state, action.payload];
     }
+    case DoneActions.ADD_ALL_NOTES: {
+      return action.payload;
+    }
     default:
       return state;
   }

@@ -1,14 +1,36 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { BsCheckAll } from 'react-icons/bs';
 import { BsArchive } from 'react-icons/bs';
 import { BsFillTrashFill } from 'react-icons/bs';
+import { removeAllNote, TodoNote } from '../redux/actions/todoActions';
+import { archivateAllNotes, ArchiveNote } from '../redux/actions/archiveActions';
+import { addAllNotes, DoneNote } from '../redux/actions/doneActions';
 
-interface Props {}
+type Props = {
+  notes: Array<TodoNote>;
+};
 
-const handleOnClick = (): void => console.log('work!!');
+const TableHeader: React.FC<Props> = ({ notes }: Props) => {
+  const dispatch = useDispatch();
+  const onClickAddAllNoteToDone =
+    (notes: Array<TodoNote | DoneNote | ArchiveNote> = []) =>
+    (e: React.MouseEvent): void => {
+      dispatch(removeAllNote);
+      dispatch(addAllNotes(notes));
+    };
 
-const Header: React.FC = (props: Props) => {
+  const handleArchivateAllNotes =
+    (notes: Array<TodoNote> = []) =>
+    (e: React.MouseEvent): void => {
+      dispatch(archivateAllNotes(notes));
+      dispatch(removeAllNote);
+    };
+  const handleRomoveAllNotes = () => {
+    dispatch(removeAllNote);
+  };
+
   return (
     <thead>
       <tr>
@@ -18,13 +40,13 @@ const Header: React.FC = (props: Props) => {
         <th>Content</th>
         <th>Dates</th>
         <th>
-          <Button onClick={handleOnClick} variant='dark'>
+          <Button onClick={onClickAddAllNoteToDone(notes)} variant='dark'>
             <BsCheckAll />
           </Button>
-          <Button variant='dark'>
+          <Button onClick={handleArchivateAllNotes(notes)} variant='dark'>
             <BsArchive />
           </Button>
-          <Button variant='dark'>
+          <Button onClick={handleRomoveAllNotes} variant='dark'>
             <BsFillTrashFill />
           </Button>
         </th>
@@ -33,4 +55,4 @@ const Header: React.FC = (props: Props) => {
   );
 };
 
-export default Header;
+export default TableHeader;

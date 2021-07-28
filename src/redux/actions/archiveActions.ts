@@ -1,5 +1,6 @@
 export enum ArchiveActions {
-  ADD_ARCHIVE_NOTE = 'Add to archive note',
+  ARCHIVATE_NOTE = 'Add to archive note',
+  ARCHIVATE_ALL_NOTES = 'Add to archive all notes',
   UNARCHIVE_NOTE = 'Remove note with archive',
 }
 
@@ -9,24 +10,34 @@ export type ArchiveNote = {
   created: string;
   category: string;
   content: string;
-  dates: number;
+  dates: string;
 };
 
-export type AddToArchiveNote = {
-  type: ArchiveActions.ADD_ARCHIVE_NOTE;
+export type ArchivateNote = {
+  type: ArchiveActions.ARCHIVATE_NOTE;
   payload: ArchiveNote;
 };
 
-export type UnarchiveNote = {
+export type ArchivateAllNotes = {
+  type: ArchiveActions.ARCHIVATE_ALL_NOTES;
+  payload: Array<ArchiveNote>;
+};
+
+export type UnarchivateNote = {
   type: ArchiveActions.UNARCHIVE_NOTE;
   payload: ArchiveNote;
 };
 
-export type ArchiveActionsTypes = AddToArchiveNote | UnarchiveNote;
+export type ArchiveActionsTypes = ArchivateNote | UnarchivateNote | ArchivateAllNotes;
 
-export const addToArchiveNote = (note: ArchiveNote): ArchiveActionsTypes => ({
-  type: ArchiveActions.ADD_ARCHIVE_NOTE,
+export const archivateNote = (note: ArchiveNote): ArchiveActionsTypes => ({
+  type: ArchiveActions.ARCHIVATE_NOTE,
   payload: note,
+});
+
+export const archivateAllNotes = (notes: Array<ArchiveNote>): ArchiveActionsTypes => ({
+  type: ArchiveActions.ARCHIVATE_ALL_NOTES,
+  payload: notes,
 });
 
 export const unarchiveNote = (note: ArchiveNote): ArchiveActionsTypes => ({

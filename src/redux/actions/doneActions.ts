@@ -1,5 +1,8 @@
+import { TodoNote } from './todoActions';
+
 export enum DoneActions {
   ADD_NOTE = 'Add Done NOTE',
+  ADD_ALL_NOTES = 'Add todo Note',
   EDIT_NOTE = 'Edit Done NOTE',
   REMOVE_NOTE = 'Remove Done NOTE',
   ARCHIVE_NOTE = 'Archive Done NOTE',
@@ -12,12 +15,17 @@ export type DoneNote = {
   created: string;
   category: string;
   content: string;
-  dates: number;
+  dates: string;
 };
 
 export type AddNote = {
   type: DoneActions.ADD_NOTE;
   payload: DoneNote;
+};
+
+export type AddAllNote = {
+  type: DoneActions.ADD_ALL_NOTES;
+  payload: Array<DoneNote>;
 };
 
 export type EditNote = {
@@ -42,11 +50,22 @@ export type ImportNotes = {
   payload: DoneNote[];
 };
 
-export type DoneActionsTypes = AddNote | EditNote | RemoveNote | ArchiveNote | ImportNotes;
+export type DoneActionsTypes =
+  | AddNote
+  | AddAllNote
+  | EditNote
+  | RemoveNote
+  | ArchiveNote
+  | ImportNotes;
 
 export const addNote = (note: DoneNote): DoneActionsTypes => ({
   type: DoneActions.ADD_NOTE,
   payload: note,
+});
+
+export const addAllNotes = (notes: Array<DoneNote | TodoNote>): DoneActionsTypes => ({
+  type: DoneActions.ADD_ALL_NOTES,
+  payload: notes,
 });
 
 export const editNote = (note: DoneNote): DoneActionsTypes => ({

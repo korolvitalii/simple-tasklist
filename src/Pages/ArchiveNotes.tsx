@@ -5,12 +5,11 @@ import Archive from '../components/Archive';
 import TableHeader from '../components/TableHeader';
 
 const DoneNotes: React.FC = () => {
-  const notes = useSelector((state: RootStateOrAny) => state.doneNotes);
-  console.log(notes);
+  const archiveNotes = useSelector((state: RootStateOrAny) => state.archiveNotes);
   return (
     <>
       <Table responsive striped bordered hover variant='dark'>
-        <TableHeader />
+        <TableHeader notes={archiveNotes} />
         <Archive />
       </Table>
     </>

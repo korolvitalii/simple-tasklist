@@ -1,6 +1,9 @@
 import { TodoNote, TodoActions, TodoActionsTypes } from '../actions/todoActions';
 
-export const todoReducer = (state = [] as TodoNote[], action: TodoActionsTypes): TodoNote[] => {
+export const todoReducer = (
+  state = [] as Array<TodoNote>,
+  action: TodoActionsTypes,
+): Array<TodoNote> => {
   switch (action.type) {
     case TodoActions.ADD_NOTE: {
       return [...state, action.payload];
@@ -11,6 +14,9 @@ export const todoReducer = (state = [] as TodoNote[], action: TodoActionsTypes):
     case TodoActions.REMOVE_NOTE: {
       const newNotes = state.filter((note) => note.id !== action.payload.id);
       return newNotes;
+    }
+    case TodoActions.REMOVE_ALL_NOTES: {
+      return [];
     }
     case TodoActions.IMPORT_NOTES: {
       return action.payload;

@@ -6,12 +6,11 @@ import Note from '../components/Note';
 import TableHeader from '../components/TableHeader';
 
 const DoneNotes: React.FC = () => {
-  const notes = useSelector((state: RootStateOrAny) => state.doneNotes);
-  console.log(notes);
+  const doneNotes = useSelector((state: RootStateOrAny) => state.doneNotes);
   return (
     <>
       <Table responsive striped bordered hover variant='dark'>
-        <TableHeader />
+        <TableHeader notes={doneNotes} />
         <Done />
       </Table>
     </>
