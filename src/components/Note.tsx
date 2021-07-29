@@ -10,7 +10,14 @@ import CreateNoteModal from './CreateNoteModal';
 const Note: React.FC = () => {
   const dispatch = useDispatch();
   const notes = useSelector((state: RootStateOrAny) => state.allNotes);
+
   const [show, setShow] = useState(false);
+  const onClickToggleForm = (): void => {
+    setShow(!show);
+  };
+  const onClickCloseForm = (): void => {
+    setShow(false);
+  };
 
   const onClickAddNoteToDone =
     (id: number) =>
@@ -33,10 +40,6 @@ const Note: React.FC = () => {
       dispatch(archivateNote(currentNote));
       dispatch(removeNote(id));
     };
-
-  const onClickToggleForm = (): void => {
-    setShow(!show);
-  };
 
   return (
     <>
@@ -68,7 +71,7 @@ const Note: React.FC = () => {
           );
         })}
       </tbody>
-      <CreateNoteModal showModal={show} />
+      <CreateNoteModal showModal={show} onClickCloseForm={onClickCloseForm} />
     </>
   );
 };
