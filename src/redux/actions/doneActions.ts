@@ -15,7 +15,7 @@ export type DoneNote = {
   created: string;
   category: string;
   content: string;
-  dates: string;
+  dates: Array<string>;
 };
 
 export type AddNote = {

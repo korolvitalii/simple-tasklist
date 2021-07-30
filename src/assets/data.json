@@ -5,7 +5,7 @@
     "created": "April 20, 2021",
     "category": "Task",
     "content": "Tomatoes, bread",
-    "dates": "asdasd"
+    "dates": ["01.02.2021", "02.05.2022"]
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "created": "April 27, 2021",
     "category": "Random Thougth",
     "content": "The evolution",
-    "dates": "asdasd"
+    "dates": []
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "created": "May 05, 2021",
     "category": "Idea",
     "content": "Implement new..",
-    "dates": "asdasd"
+    "dates": []
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "created": "May 07, 2021",
     "category": "Quote",
     "content": "Power doesnt.. ",
-    "dates": "asdasd"
+    "dates": []
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "created": "May 15, 2021",
     "category": "Task",
     "content": "The learn startup",
-    "dates": "asdasd"
+    "dates": []
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "created": "April 20, 2021",
     "category": "Task",
     "content": "Wrire poem",
-    "dates": "asdasd"
+    "dates": []
   },
   {
     "id": 6,
@@ -53,6 +53,6 @@
     "created": "April 22, 2021",
     "category": "Task",
     "content": "Maxtrix, 1+1...",
-    "dates": "asdasd"
+    "dates": []
   }
 ]

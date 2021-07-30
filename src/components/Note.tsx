@@ -15,6 +15,9 @@ const Note: React.FC = () => {
   const onClickToggleForm = (): void => {
     setShow(!show);
   };
+
+  const [currentNote, setCurrentNote] = useState<TodoNote>();
+
   const onClickCloseForm = (): void => {
     setShow(false);
   };
@@ -41,6 +44,15 @@ const Note: React.FC = () => {
       dispatch(removeNote(id));
     };
 
+  const onClickEditNote =
+    (id: number) =>
+    (e: React.MouseEvent): void => {
+      onClickToggleForm();
+      const note = notes.find((note: TodoNote) => note.id === id);
+      setCurrentNote(note);
+    };
+  console.log(currentNote);
+
   return (
     <>
       <tbody>
@@ -52,12 +64,12 @@ const Note: React.FC = () => {
               <td>{created}</td>
               <td>{category}</td>
               <td>{content}</td>
-              <td>{dates}</td>
+              <td>{dates.map((item) => `${item}  `)}</td>
               <td>
                 <Button onClick={onClickAddNoteToDone(id)} variant='dark'>
                   <BsCheck />
                 </Button>
-                <Button onClick={onClickToggleForm} variant='dark'>
+                <Button onClick={onClickEditNote(id)} variant='dark'>
                   <BsPencil />
                 </Button>
                 <Button onClick={onClickArchiveNote(id)} variant='dark'>
@@ -71,7 +83,11 @@ const Note: React.FC = () => {
           );
         })}
       </tbody>
-      <CreateNoteModal showModal={show} onClickCloseForm={onClickCloseForm} />
+      <CreateNoteModal
+        showModal={show}
+        currentNote={currentNote}
+        onClickCloseForm={onClickCloseForm}
+      />
     </>
   );
 };
